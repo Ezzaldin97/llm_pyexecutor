@@ -46,7 +46,7 @@ class ExecutorLogger:
         Returns:
             str: The format string for console log messages.
         """
-        return "<green>{time:YYYY-MM-DD HH:mm:ss}</green> | <level>{level: <8}</level> | <cyan>{name}</cyan>:<cyan>{line}</cyan> - <level>{message}</level>"
+        return "<green>{time:YYYY-MM-DD HH:mm:ss}</green> | <level>{level: <8}</level> | <level>{message}</level>"
 
     @staticmethod
     def _get_file_format() -> str:
