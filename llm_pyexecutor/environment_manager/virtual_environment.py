@@ -22,7 +22,7 @@ class VirtualEnvironmentManager:
     """
 
     def __init__(
-        self, env_name: Union[Path, str], base_dir: Union[Path, str], timeout: int = 60, logger,
+        self, env_name: Union[Path, str], base_dir: Union[Path, str], logger, timeout: int = 60,
     ) -> None:
         """
         Initializes the VirtualEnvironmentManager with the specified environment name and base directory.
