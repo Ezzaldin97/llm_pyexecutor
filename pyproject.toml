@@ -1,0 +1,20 @@
+[project]
+name = "code-executor"
+version = "0.1.0"
+description = "python code executor tool that takes fuzzy input text to extract and execute code designed for LLM applications"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "astor>0.8.0",
+    "jinja2>=3.1.1",
+    "loguru>=0.7.2",
+]
+
+[tool.uv]
+dev-dependencies = [
+    "black>=24.4.0",
+    "notebook>=7.2.2",
+    "pdoc>=15.0.0",
+    "pytest>=8.1.1",
+    "ruff>=0.8.0",
+]
