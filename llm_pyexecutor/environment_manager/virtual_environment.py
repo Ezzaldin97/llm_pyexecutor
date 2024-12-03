@@ -11,7 +11,7 @@ class VirtualEnvironmentManager:
     """
     A class to manage a Python virtual environment, including creating the environment,
     installing dependencies, and checking for installed packages.
-    
+
     Attributes:
         env_name (Path): The name of the virtual environment.
         base_dir (Path): The base directory where the virtual environment will be created.
@@ -22,7 +22,11 @@ class VirtualEnvironmentManager:
     """
 
     def __init__(
-        self, env_name: Union[Path, str], base_dir: Union[Path, str], logger, timeout: int = 60,
+        self,
+        env_name: Union[Path, str],
+        base_dir: Union[Path, str],
+        logger,
+        timeout: int = 60,
     ) -> None:
         """
         Initializes the VirtualEnvironmentManager with the specified environment name and base directory.
@@ -108,8 +112,7 @@ class VirtualEnvironmentManager:
             raise TimeoutError("pip install timed out")
         if result.returncode != 0:
             self.logger.error(
-                "Error Occurred during installation due to:"
-                f"{result.stderr}"
+                "Error Occurred during installation due to:" f"{result.stderr}"
             )
             raise PipInstallationError(err=result.stderr, out=result.stdout)
 
@@ -158,8 +161,7 @@ class VirtualEnvironmentManager:
             raise TimeoutError("pip install timed out")
         if result.returncode != 0:
             self.logger.error(
-                "Error Occurred during checking due to:"
-                f"{result.stderr}"
+                "Error Occurred during checking due to:" f"{result.stderr}"
             )
             raise PipInstallationError(err=result.stderr, out=result.stdout)
         return uninstalled_deps
