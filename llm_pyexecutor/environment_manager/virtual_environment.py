@@ -106,6 +106,14 @@ class VirtualEnvironmentManager:
                 encoding="utf-8",
             )
             self.logger.info("dependencies successfully installed!!")
+        except subprocess.CalledProcessError:
+            self.logger.error(
+                "Error Occurred during installation, please check your Internet connection"
+            )
+            raise PipInstallationError(
+                err="Check Your Internet Connection", 
+                out=f"pip failed to install: {deps}"
+            )
         except subprocess.TimeoutExpired:
             self.logger.error("pip install timed out")
             raise TimeoutError("pip install timed out")
