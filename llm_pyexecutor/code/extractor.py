@@ -98,6 +98,7 @@ class PythonCodeExtractor:
             if code is not None
         ]
         clean_code = "".join(line + "\n" for line in codes)
+        clean_code = PythonCodeExtractor.remove_repititive_lines(clean_code)
         try:
             PythonCodeExtractor.is_python_code(clean_code)
         except SyntaxError:
