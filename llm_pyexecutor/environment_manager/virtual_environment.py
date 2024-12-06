@@ -147,14 +147,19 @@ class VirtualEnvironmentManager:
                 check=True,
                 cwd=self.base_dir,
                 timeout=self.timeout,
-                capture_output=True,
                 encoding="utf-8",
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE,
+                text=True
             )
             if len(result.stderr) > 0:
                 pkgs = result.stderr.split(":")[-1].split(",")
                 pkgs = [ele.strip().replace("\n", "") for ele in pkgs]
                 uninstalled_deps.extend(pkgs)
                 self.logger.info(f"Found Uninstalled dependencies: {uninstalled_deps}")
+            return uninstalled_deps
+        except subprocess.CalledProcessError:
+            return deps
         except subprocess.TimeoutExpired:
             self.logger.error("pip install timed out")
             raise TimeoutError("pip install timed out")
@@ -163,4 +168,3 @@ class VirtualEnvironmentManager:
                 "Error Occurred during checking due to:" f"{result.stderr}"
             )
             raise PipInstallationError(err=result.stderr, out=result.stdout)
-        return uninstalled_deps
