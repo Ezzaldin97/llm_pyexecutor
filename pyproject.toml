@@ -18,3 +18,11 @@ dev-dependencies = [
     "pytest>=8.1.1",
     "ruff>=0.8.0",
 ]
+
+[tool.ruff]
+line-length = 88
+src = ["llm_pyexecutor"]
+
+[tool.ruff.lint.per-file-ignores]
+"__init__.py" = ["F401", "E402"]
+"tests/*.py" = ["E402", "E712"]
