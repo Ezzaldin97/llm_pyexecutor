@@ -25,7 +25,7 @@ class VirtualEnvironmentManager:
         env_name: Union[Path, str],
         base_dir: Union[Path, str],
         logger,
-        timeout: int = 60,
+        timeout: int = 200,
     ) -> None:
         """
         Initializes the VirtualEnvironmentManager with the specified environment name and base directory.
@@ -33,7 +33,7 @@ class VirtualEnvironmentManager:
         Args:
             env_name (Union[Path, str]): The name of the virtual environment.
             base_dir (Union[Path, str]): The base directory for the virtual environment.
-            timeout (int): The timeout for subprocess calls (default is 60 seconds).
+            timeout (int): The timeout for subprocess calls (default is 200 seconds).
             logger: A logger object for logging messages.
 
         Raises:
