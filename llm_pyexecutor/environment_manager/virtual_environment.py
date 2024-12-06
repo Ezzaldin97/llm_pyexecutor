@@ -111,8 +111,8 @@ class VirtualEnvironmentManager:
                 "Error Occurred during installation, please check your Internet connection"
             )
             raise PipInstallationError(
-                err="Check Your Internet Connection", 
-                out=f"pip failed to install: {deps}"
+                err="Check Your Internet Connection",
+                out=f"pip failed to install: {deps}",
             )
         except subprocess.TimeoutExpired:
             self.logger.error("pip install timed out")
@@ -158,7 +158,7 @@ class VirtualEnvironmentManager:
                 encoding="utf-8",
                 stdout=subprocess.PIPE,
                 stderr=subprocess.PIPE,
-                text=True
+                text=True,
             )
             if len(result.stderr) > 0:
                 pkgs = result.stderr.split(":")[-1].split(",")

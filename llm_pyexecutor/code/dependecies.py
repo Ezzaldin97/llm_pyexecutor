@@ -66,7 +66,7 @@ def is_standard_package(venv_executor: str, script_path: str, wd: str) -> List[s
             timeout=120,
             capture_output=True,
             encoding="utf-8",
-            text = True
+            text=True,
         )
         res = (
             result.stdout.strip()
