@@ -12,6 +12,9 @@ authors = [
     { name = "Ezzeldeen Mamdouh", email = "ezzaldin_mamdouh_seddik@hotmail.com" }
 ]
 
+[project.urls]
+Repository = "https://github.com/Ezzaldin97/llm_pyexecutor"
+
 [project.optional-dependencies]
 huggingface = [
     "huggingface-hub>=0.26.1",
