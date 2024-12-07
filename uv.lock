@@ -333,7 +333,6 @@ version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
     { name = "astor" },
-    { name = "jinja2" },
     { name = "loguru" },
 ]
 
@@ -349,7 +348,6 @@ dev = [
 [package.metadata]
 requires-dist = [
     { name = "astor", specifier = ">0.8.0" },
-    { name = "jinja2", specifier = ">=3.1.1" },
     { name = "loguru", specifier = ">=0.7.2" },
 ]
 
