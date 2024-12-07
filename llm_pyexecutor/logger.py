@@ -1,8 +1,9 @@
-from loguru import logger
-from datetime import datetime
 import sys
-from typing import Optional
+from datetime import datetime
 from pathlib import Path
+from typing import Optional
+
+from loguru import logger
 
 
 class ExecutorLogger:
