@@ -24,7 +24,7 @@ huggingface = [
 [tool.uv]
 dev-dependencies = [
     "black>=24.4.0",
-    "interrogate[png]>=1.5.0",
+    "interrogate>=1.7.0",
     "isort>=5.13.0",
     "notebook>=7.2.2",
     "pdoc>=15.0.0",
