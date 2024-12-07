@@ -2,6 +2,15 @@ version = 1
 requires-python = ">=3.10"
 
 [[package]]
+name = "aisuite"
+version = "0.1.6"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/39/cf/3eebce1294ed5b20bb824e6a4089be5f0b81d1f37299a2119dfc03f0340b/aisuite-0.1.6.tar.gz", hash = "sha256:0937372a4aa369ad63fa2350cf58780fdad6914e651e97ca7f6192a517e933b7", size = 13594 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/62/67/a9a13cb66991e15fd9c3505b6b85cab775e60a40124221484dc1b4628556/aisuite-0.1.6-py3-none-any.whl", hash = "sha256:d564a6dc4b7e8dd1d2c86f38331e41ef30b9a2adce9e13640232aed5ea049673", size = 20286 },
+]
+
+[[package]]
 name = "anyio"
 version = "4.6.2.post1"
 source = { registry = "https://pypi.org/simple" }
@@ -336,6 +345,11 @@ dependencies = [
     { name = "loguru" },
 ]
 
+[package.optional-dependencies]
+huggingface = [
+    { name = "aisuite" },
+]
+
 [package.dev-dependencies]
 dev = [
     { name = "black" },
@@ -348,6 +362,7 @@ dev = [
 
 [package.metadata]
 requires-dist = [
+    { name = "aisuite", extras = ["huggingface"], marker = "extra == 'huggingface'", specifier = ">=0.1.4" },
     { name = "astor", specifier = ">0.8.0" },
     { name = "loguru", specifier = ">=0.7.2" },
 ]

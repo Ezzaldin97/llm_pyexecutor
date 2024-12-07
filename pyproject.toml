@@ -12,6 +12,11 @@ authors = [
     { name = "Ezzeldeen Mamdouh", email = "ezzaldin_mamdouh_seddik@hotmail.com" }
 ]
 
+[project.optional-dependencies]
+huggingface = [
+    "aisuite[huggingface]>=0.1.4",
+]
+
 [tool.uv]
 dev-dependencies = [
     "black>=24.4.0",
