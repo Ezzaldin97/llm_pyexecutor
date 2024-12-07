@@ -108,7 +108,7 @@ class LLMPythonCodeExecutor:
                     standard_deps = is_standard_package(
                         venv_executor,
                         str((self.path / "scripts" / "is_standard_pkg.py")),
-                        str(self.executor_dir_path),
+                        ".",
                     )
                     additional_pkgs = list(
                         {
