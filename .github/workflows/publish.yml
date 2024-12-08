@@ -5,7 +5,7 @@ on:
 
 jobs:
   pypi_release:
-    name: Publish to PyPi Using Poetry
+    name: Publish to PyPi
     runs-on: ubuntu-latest
     steps:
         - uses: actions/checkout@v3
