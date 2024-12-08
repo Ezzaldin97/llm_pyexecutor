@@ -1,6 +1,6 @@
 [project]
-name = "llm-pyexecutor"
-version = "0.1.0"
+name = "llm-code-executor"
+version = "0.3.0"
 description = "python code executor tool that takes fuzzy input text to extract and execute code designed for LLM applications"
 readme = "README.md"
 requires-python = ">=3.10"
@@ -51,5 +51,5 @@ ignore-module = true
 exclude = ["tests"]
 
 [tool.setuptools.packages.find]
-include = ["llm_pyexecutor"]
-exclude = ["imgs"]
+where = ["."]
+exclude = ["tests", "imgs", "examples"]
