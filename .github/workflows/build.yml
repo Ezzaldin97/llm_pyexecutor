@@ -33,6 +33,6 @@ jobs:
         - name: Run tests
           run: bash scripts/testing.sh
         - name: Check docstring
-          run: bash scripts/docstring/.sh
+          run: bash scripts/docstring.sh
         - name: Build Artifacts
           run: uv build
