@@ -18,8 +18,6 @@ jobs:
             pip install uv
         - name: Install deps
           run: |
-            uv sync 
-        - name: set PyPI publish token
-          run: export UV_PUBLISH_TOKEN = ${{ secrets.PYPI_API_KEY }}
+            uv sync  
         - name: Publish package
-          run: uv build && uv publish
+          run: uv build & uv publish --token ${{ secrets.PYPI_API_KEY }}
