@@ -16,9 +16,10 @@ from llm_pyexecutor.logger import ExecutorLogger
 
 
 class LLMPythonCodeExecutor:
-    """A class to extract code, install dependencies and execute code 
-    from a given test 
+    """A class to extract code, install dependencies and execute code
+    from a given test
     """
+
     def __init__(
         self,
         name: Optional[str] = "local_executor",
