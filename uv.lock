@@ -839,8 +839,8 @@ wheels = [
 ]
 
 [[package]]
-name = "llm-pyexecutor"
-version = "0.1.0"
+name = "llm-code-executor"
+version = "0.3.0"
 source = { virtual = "." }
 dependencies = [
     { name = "astor" },

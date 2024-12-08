@@ -20,3 +20,9 @@ else
     echo -e "\n#### FAILURE: unit-testing failed. ####\n"
     global_status=1
 fi
+
+if [[ -d "tests/local_executor" ]]
+then
+    rm -rf tests/local_executor
+    echo "executor DIR removed"
+fi
