@@ -49,3 +49,7 @@ ignore-private = true
 ignore-property-decorators = false
 ignore-module = true
 exclude = ["tests"]
+
+[tool.setuptools.packages.find]
+include = ["llm_pyexecutor"]
+exclude = ["imgs"]
