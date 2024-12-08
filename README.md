@@ -1,3 +1,3 @@
 # LLM Python Executor Tool
 
-![](assets/imgs/logo.jpg)
+![](imgs/logo.jpg)
