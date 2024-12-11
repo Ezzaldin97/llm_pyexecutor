@@ -20,6 +20,9 @@ huggingface = [
     "huggingface-hub>=0.26.1",
     "python-dotenv>=1.0.1",
 ]
+agents = [
+    "crewai[tools]>=0.83.0",
+]
 
 [tool.uv]
 dev-dependencies = [
