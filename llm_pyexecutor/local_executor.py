@@ -127,8 +127,7 @@ class LLMPythonCodeExecutor:
                         self._logger.info("Check if packages are installed")
                         uninstalled_deps = (
                             self._executor_venv.check_additional_dependencies(
-                                additional_pkgs,
-                                str(self.executor_dir_path)
+                                additional_pkgs, str(self.executor_dir_path)
                             )
                         )
                         if len(uninstalled_deps) > 0:
@@ -137,8 +136,7 @@ class LLMPythonCodeExecutor:
                             )
                             self._logger.info("Installing Dependencies in Progress!!!")
                             self._executor_venv.install_additional_dependencies(
-                                uninstalled_deps,
-                                str(self.executor_dir_path)
+                                uninstalled_deps, str(self.executor_dir_path)
                             )
                             self._logger.info("Installation Successfully Completed!!")
                 else:
@@ -148,8 +146,7 @@ class LLMPythonCodeExecutor:
                     venv_executor = self._executor_venv.get_pyexecutor()
                     uninstalled_deps = (
                         self._executor_venv.check_additional_dependencies(
-                            extracted_pkgs,
-                            str(self.executor_dir_path)
+                            extracted_pkgs, str(self.executor_dir_path)
                         )
                     )
                     if len(uninstalled_deps) > 0:
@@ -158,8 +155,7 @@ class LLMPythonCodeExecutor:
                         )
                         self._logger.info("Installing Dependencies in Progress!!!")
                         self._executor_venv.install_additional_dependencies(
-                            uninstalled_deps,
-                            str(self.executor_dir_path)
+                            uninstalled_deps, str(self.executor_dir_path)
                         )
                         self._logger.info("Installation Successfully Completed!!")
                 code_result = self._code_executor.execute_code(

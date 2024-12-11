@@ -4,6 +4,7 @@ from typing import Union, List, Any
 from types import SimpleNamespace
 from ..environment_manager.exceptions import PipInstallationError
 import venv
+import re
 
 
 class VirtualEnvironmentManager:
@@ -90,7 +91,7 @@ class VirtualEnvironmentManager:
         Args:
             deps (List[str]): A list of dependency names to install.
             wd : str
-                working directory default to current working directory. 
+                working directory default to current working directory.
 
         Raises:
             TimeoutError: If the pip install command times out.
@@ -134,7 +135,9 @@ class VirtualEnvironmentManager:
         """
         return self._executor_venv.env_exe
 
-    def check_additional_dependencies(self, deps: List[str], wd: str = ".") -> List[Any]:
+    def check_additional_dependencies(
+        self, deps: List[str], wd: str = "."
+    ) -> List[Any]:
         """
         Checks if additional dependencies are installed in the virtual environment.
 
@@ -168,9 +171,9 @@ class VirtualEnvironmentManager:
                 pkgs = result.stderr.split(":")[-1].split(",")
                 pkgs = [ele.strip().replace("\n", "") for ele in pkgs]
                 # Regular expression to match ANSI escape codes
-                ansi_escape = re.compile(r'\x1B[@-_][0-?]*[ -/]*[@-~]')
+                ansi_escape = re.compile(r"\x1B[@-_][0-?]*[ -/]*[@-~]")
                 # Remove ANSI escape codes
-                pkgs = [ansi_escape.sub('', ele) for ele in pkgs]
+                pkgs = [ansi_escape.sub("", ele) for ele in pkgs]
                 uninstalled_deps.extend(pkgs)
                 self.logger.info(f"Found Uninstalled dependencies: {uninstalled_deps}")
             return uninstalled_deps
