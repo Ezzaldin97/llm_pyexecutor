@@ -83,12 +83,14 @@ class VirtualEnvironmentManager:
             env_builder.create(self.env_path)
             return env_builder.ensure_directories(self.env_path)
 
-    def install_additional_dependencies(self, deps: List[str]):
+    def install_additional_dependencies(self, deps: List[str], wd: str = "."):
         """
         Installs additional dependencies using pip in the virtual environment.
 
         Args:
             deps (List[str]): A list of dependency names to install.
+            wd : str
+                working directory default to current working directory. 
 
         Raises:
             TimeoutError: If the pip install command times out.
@@ -100,7 +102,7 @@ class VirtualEnvironmentManager:
             result = subprocess.run(
                 cmd,
                 check=True,
-                cwd=self.base_dir,
+                cwd=wd,
                 timeout=self.timeout,
                 capture_output=True,
                 encoding="utf-8",
@@ -132,12 +134,14 @@ class VirtualEnvironmentManager:
         """
         return self._executor_venv.env_exe
 
-    def check_additional_dependencies(self, deps: List[str]) -> List[Any]:
+    def check_additional_dependencies(self, deps: List[str], wd: str = ".") -> List[Any]:
         """
         Checks if additional dependencies are installed in the virtual environment.
 
         Args:
             deps (List[str]): A list of dependency names to check.
+            wd : str
+                working directory default to current working directory.
 
         Returns:
             List[Any]: A list of uninstalled dependencies.
@@ -153,7 +157,7 @@ class VirtualEnvironmentManager:
             result = subprocess.run(
                 cmd,
                 check=True,
-                cwd=self.base_dir,
+                cwd=wd,
                 timeout=self.timeout,
                 encoding="utf-8",
                 stdout=subprocess.PIPE,
@@ -163,6 +167,10 @@ class VirtualEnvironmentManager:
             if len(result.stderr) > 0:
                 pkgs = result.stderr.split(":")[-1].split(",")
                 pkgs = [ele.strip().replace("\n", "") for ele in pkgs]
+                # Regular expression to match ANSI escape codes
+                ansi_escape = re.compile(r'\x1B[@-_][0-?]*[ -/]*[@-~]')
+                # Remove ANSI escape codes
+                pkgs = [ansi_escape.sub('', ele) for ele in pkgs]
                 uninstalled_deps.extend(pkgs)
                 self.logger.info(f"Found Uninstalled dependencies: {uninstalled_deps}")
             return uninstalled_deps
